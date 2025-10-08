@@ -133,10 +133,13 @@
                         out[key] = value;
                     }
             })
+            var final_data_2 
             const final_data = fetch("http://127.0.0.1:5000/parse",{method: 'POST',headers: {'Content-type': 'application/json'},body: JSON.stringify(out)})
-            .then(response => response.json()).then(data => console.log("Sucess",data));
+            .then(response => 
+            response.json()).then(data => {final_data_2 = data;
+                result.innerHTML = '<strong>Captured values</strong><pre>' + JSON.stringify(final_data_2,null,2)+ '</pre>';
+            });
             console.log(typeof(final_data))
-            result.innerHTML = '<strong>Captured values</strong><pre>' + JSON.stringify(final_data.response.json(),null,2)+ '</pre>';
         }
             );
 
